@@ -13,7 +13,7 @@ router.get('/pods', controller.getAllPods)
 router.get('/pods/topic', controller.getPodByTopic)
 router.post('/pods', controller.createPod)
 router.patch('/pods/:id/stars', controller.updateStars)
-// TODO router.delete("/pods/:id", controller.deletePod)
+router.delete("/pods/:id", controller.deletePods)
 
 //exportando para ser usado no app.js
 module.exports = router

@@ -12,7 +12,7 @@ const app = express() // executo o express
 app.use(express.json()) // uso o bodyparser
 
 // criar uma rota raiz
-app.use("/playlist", musicasRoutes)
+// app.use("/playlist", musicasRoutes)
 app.use("/podlist", podcastsRoutes)
 
 

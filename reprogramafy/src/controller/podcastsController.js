@@ -1,3 +1,4 @@
+const { request, response } = require('express')
 const pods = require('../models/podcasts.json')
 
 // retornando todas as musicas
@@ -89,12 +90,31 @@ const updateStars = (req, res) => {
   }
 }
 
-// TODO const deletePod = (req, res) =>
+const deletePods = (request, response) => {
 
+  const idRequest = request.params.id
+  deleteFilter = pods.findIndex((pods) => pods.id == idRequest)
+
+  pods.splice(deleteFilter, 1) 
+  if (deleteFilter) {
+
+    response.status(200).json({
+          "mensagem": "O podcast foi deletado",
+          "deletado": idRequest,
+          pods
+      })
+  } else {
+      response.status(500).send({
+          "menssage": "Podcast requisitado não encontrado."
+      })
+
+  }
+
+}
 module.exports = {
   getAllPods,
   getPodByTopic,
   createPod,
   updateStars,
-  // TODO deletePod,
+  deletePods,
 }
